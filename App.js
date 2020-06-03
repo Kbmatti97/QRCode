@@ -39,6 +39,7 @@ const styles = StyleSheet.create({
 
   choix: {
     flex: 1,
+    justifyContent: "center",
     
   },
   buttons: {

@@ -1,59 +1,29 @@
-import React from 'react'
-import { StyleSheet, View, TextInput, Button, Text, Alert } from 'react-native'
+// In App.js in a new project
 
-class App extends React.Component {
+import * as React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import Menu from './Components/Menu';
+import Login from './Components/Login';
+import Paiement from './Components/Paiement';
+import ScannQRCode from './Components/ScannQRCode';
+import ConsulterCompte from './Components/ConsulterCompte';
 
-  buttonRepondrePressed() {
-    Alert.prompt("Votre choix")
-  }
 
-  render() {
-    return (
-      <View style={styles.main_container}>
-        <View style={styles.choix}>
-          <Text style={styles.text}>1- Consulter solde </Text>
-          <Text style={styles.text}>2- Effectuer un paiement </Text>
-          <Text style={styles.text}>0- Exit </Text>
-        </View>
-        <View style={styles.textinput}>
-          <TextInput placeholder='Entrer une valeur'/>
-        </View>
-        <View style={styles.buttons}>
-          <Button style={styles.row1} title='OK' onPress={() => {<TextInput placeholder='Entrer une valeur'/>}}/>
-          <Button style={styles.row} title='Repondre' onPress={() => this.buttonRepondrePressed()}/>
-        </View>
-      </View>
-    )
-  }
+const Stack = createStackNavigator();
+
+function App() {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Menu" component={Menu} options={{ title: ' ' }} />
+        <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen name="ConsulterCompte" component={ConsulterCompte}/>
+        <Stack.Screen name="Paiement" component={Paiement}/>
+        <Stack.Screen name="ScannQRCode" component={ScannQRCode}/>
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
 }
 
-const styles = StyleSheet.create({
-  main_container: {
-    flex: 1,
-  }, 
-  textinput: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  }, 
-
-  choix: {
-    flex: 1,
-    justifyContent: "center",
-    
-  },
-  buttons: {
-    flex: 1,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',  
-  },
-  
-  
-  text: {
-    textAlign: 'center',
-    marginTop: 20,  
-  }
-})
-
-export default App
+export default App;
